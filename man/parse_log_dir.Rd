@@ -7,9 +7,9 @@
 parse_log_dir(log_dir, ...)
 }
 \arguments{
-\item{...}{arguments passed to parse operation}
+\item{log_dir}{...}
 
-\item{parse_log_dir}{...}
+\item{...}{arguments passed to parse operation}
 }
 \value{
 parsed log

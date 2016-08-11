@@ -13,7 +13,8 @@ Imports: magrittr,
     dplyr,
     lubridate,
     readr,
-    tidyr
+    tidyr,
+    stringr
 Suggests:
     testthat,
     knitr,

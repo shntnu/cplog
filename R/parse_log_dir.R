@@ -1,6 +1,6 @@
 #' Parse a directory of log files
 #'
-#' @param parse_log_dir ...
+#' @param log_dir ...
 #' @param ... arguments passed to parse operation
 #'
 #' @return parsed log

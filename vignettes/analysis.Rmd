@@ -20,7 +20,7 @@ library(tidyr)
 
   
 log_dir_root <- system.file("extdata", 
-                            "051816_3661_Q3Q4/68584110-07ce-41d5-a6d6-058d7a0c8065/", 
+                            "051816_3661_Q3Q4_subset/68584110-07ce-41d5-a6d6-058d7a0c8065/", 
                             package = "cplog")
 
 aws_logs <- 
