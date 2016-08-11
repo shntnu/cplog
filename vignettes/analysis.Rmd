@@ -20,7 +20,7 @@ library(tidyr)
 
   
 log_dir_root <- system.file("extdata", 
-                            "051816_3661_Q3Q4_subset/68584110-07ce-41d5-a6d6-058d7a0c8065/", 
+                            "051816_3661_Q3Q4_subset/", 
                             package = "cplog")
 
 aws_logs <- 
@@ -37,7 +37,7 @@ lapply(
 aws_logs %<>% rename(group = log_dir)
 ```
 
-```{r plot}
+```{r plot, fig.width=5}
 plot_runtimes <- function(df) {
   df %<>%
     group_by(group) %>%     

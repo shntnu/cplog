@@ -14,7 +14,8 @@ Imports: magrittr,
     lubridate,
     readr,
     tidyr,
-    stringr
+    stringr,
+    ggplot2
 Suggests:
     testthat,
     knitr,
