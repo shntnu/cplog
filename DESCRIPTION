@@ -21,3 +21,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/shntnu/cplog
+BugReports: https://github.com/shntnu/cplog/issues
