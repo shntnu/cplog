@@ -1,0 +1,65 @@
+---
+title: "Analyze CellProfiler logs"
+author: "Shantanu Singh"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyze CellProfiler logs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r load, warning=FALSE, message=FALSE}
+library(cplog)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(stringr)
+library(tidyr)
+
+  
+log_dir_root <- system.file("extdata", 
+                            "051816_3661_Q3Q4/68584110-07ce-41d5-a6d6-058d7a0c8065/", 
+                            package = "cplog")
+
+aws_logs <- 
+lapply(
+  list.dirs(log_dir_root, recursive = F, full.names = F),
+  function(log_dir) {
+    logdf <- parse_log_dir(paste0(log_dir_root, log_dir, sep = "/"))
+    logdf %>% 
+      mutate(log_dir = log_dir)
+  }
+) %>% 
+  bind_rows()
+
+aws_logs %<>% rename(group = log_dir)
+```
+
+```{r plot}
+plot_runtimes <- function(df) {
+  df %<>%
+    group_by(group) %>%     
+    summarize(calculated = sum(runtime_calc, na.rm = T), 
+              reported = sum(runtime),
+              date = min(date)) %>%
+    select(date, calculated, reported) %>%
+    gather(estimate_type, runtime, -date)
+
+  p <-  
+    ggplot(df, aes(date, runtime, color = estimate_type)) + 
+      geom_line(alpha = 0.9) +
+      geom_point(alpha = 0.3) +
+      xlab("time") +
+      ggtitle("Runtimes for each group of images")
+
+  print(p)
+}
+
+aws_logs %>% plot_runtimes()
+
+aws_logs  %>% filter(module != "NamesAndTypes") %>% plot_runtimes()
+
+```
+

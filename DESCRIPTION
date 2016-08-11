@@ -1,0 +1,21 @@
+Package: cplog
+Type: Package
+Title: Analyze logs from CellProfiler
+Version: 0.1.0
+Authors@R: as.person(c(
+    "Shantanu Singh <shsingh@broadinstitute.org> [aut, cre]"
+  ))
+Description: Analyze logs from CellProfiler.
+License: MIT + file LICENSE
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Imports: magrittr,
+    dplyr,
+    lubridate,
+    readr,
+    tidyr
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
